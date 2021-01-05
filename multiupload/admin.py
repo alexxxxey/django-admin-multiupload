@@ -9,7 +9,7 @@ import json
 from django.contrib import admin
 from django.shortcuts import render, get_object_or_404
 from django.conf.urls import url
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 
@@ -40,12 +40,14 @@ class MultiUploadAdmin(admin.ModelAdmin):
     multiupload_list = True
     multiupload_form = True
     # integer in bytes
-    multiupload_maxfilesize = 3 * 2 ** 20  # 3 Mb
+    multiupload_maxfilesize = 30 * 2 ** 20  # 3 Mb
     multiupload_minfilesize = 0
     # tuple with mimetype accepted
     multiupload_acceptedformats = ("image/jpeg",
                                    "image/pjpeg",
-                                   "image/png", )
+                                   "image/png",
+                                   "text/xml"
+                                   )
 
     multiupload_view_context = {}
 
